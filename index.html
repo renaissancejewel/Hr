@@ -545,7 +545,7 @@
             <div class="grid-3">
               <div class="field">
                 <label>Employee ID <span class="auto-badge">Auto-generated</span></label>
-                <input type="text" id="empId" readonly placeholder="RJ-2025-0001"/>
+                <input type="text" id="empId" placeholder="Enter your Employee ID"/>
               </div>
               <div class="field col-span-2">
                 <label>Full Name <span class="req">*</span></label>
@@ -714,13 +714,7 @@
     };
     // ─────────────────────────────────────────────
 
-    // Auto-generate Employee ID
-    function generateEmpId() {
-      const year = new Date().getFullYear();
-      const num  = String(Math.floor(1000 + Math.random() * 9000));
-      return `RJ-${year}-${num}`;
-    }
-    document.getElementById('empId').value = generateEmpId();
+   
 
     // Live ack name update
     document.getElementById('fullName').addEventListener('input', function() {
@@ -876,7 +870,7 @@
 
     function resetForm() {
       document.getElementById('employeeForm').reset();
-      document.getElementById('empId').value = generateEmpId();
+    
       document.getElementById('ackName').textContent = 'the undersigned';
       submitBtn.disabled = true;
       submitBtn.textContent = 'Submit Information';
