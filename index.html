@@ -509,7 +509,7 @@
       <div class="ornament-line"></div>
     </div>
     <div class="brand-name">Renaissance Jewel</div>
-    <h1 class="form-title">Employee Information<br><em>Registration</em></h1>
+    <h1 class="form-title">Employee Personal &amp; Employment<br><em>Details Form</em></h1>
     <p class="form-subtitle">Human Resources · Onboarding</p>
     <div class="divider-gem">
       <div class="divider-gem-line"></div>
@@ -635,14 +635,17 @@
             </div>
           </div>
 
-          <!-- Section 3: Emergency Contact -->
+         <!-- Section 3: Emergency Contact -->
           <div class="section">
             <div class="section-header">
               <div class="section-gem gem-emerald"></div>
               <h2 class="section-title">Emergency Contact</h2>
               <div class="section-title-line"></div>
             </div>
-            <div class="grid-3">
+
+            <!-- Contact 1 -->
+            <p style="font-size:12px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-sub);margin-bottom:14px;">Contact 1 <span style="color:var(--amber)">*</span></p>
+            <div class="grid-3" style="margin-bottom:28px;">
               <div class="field col-span-2">
                 <label>Emergency Contact Name <span class="req">*</span></label>
                 <input type="text" id="emergencyName" name="emergencyName" placeholder="Full name of contact person" required/>
@@ -664,8 +667,35 @@
                 <input type="tel" id="emergencyPhone" name="emergencyPhone" placeholder="+91 00000 00000" required/>
               </div>
             </div>
-          </div>
 
+            <!-- Divider -->
+            <div style="height:1px;background:linear-gradient(90deg,var(--border-soft),transparent);margin-bottom:24px;"></div>
+
+            <!-- Contact 2 -->
+            <p style="font-size:12px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-sub);margin-bottom:14px;">Contact 2 <span style="color:var(--text-sub);font-size:10px;">(Optional)</span></p>
+            <div class="grid-3">
+              <div class="field col-span-2">
+                <label>Emergency Contact Name <span class="req">*</span></label>
+                <input type="text" id="emergencyName2" name="emergencyName2" placeholder="Full name of contact person" required/>
+              </div>
+              <div class="field">
+                <label>Relationship <span class="req">*</span></label>
+                <select id="relationship2" name="relationship2" required>
+                  <option value="" disabled selected>Select relationship</option>
+                  <option>Spouse</option>
+                  <option>Parent</option>
+                  <option>Sibling</option>
+                  <option>Child</option>
+                  <option>Friend</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="field col-span-2">
+                <label>Emergency Contact Number <span class="req">*</span></label>
+                <input type="tel" id="emergencyPhone2" name="emergencyPhone2" placeholder="+91 00000 00000" required/>
+              </div>
+            </div>
+          </div>
           <!-- Acknowledgement -->
           <div class="acknowledgement">
             <label class="ack-label">
@@ -691,7 +721,7 @@
       <div class="success-overlay" id="successState">
         <div class="success-gem"><span>✦</span></div>
         <h2 class="success-title">Submission Received</h2>
-        <p class="success-msg">Thank you. Your information has been securely submitted to the Renaissance Jewel HR team. You will receive a confirmation shortly.</p>
+        <p class="success-msg">Thank you. Your information has been securely submitted to the Renaissance Jewel HR team.</p>
         <p class="success-id" id="successId"></p>
       </div>
 
