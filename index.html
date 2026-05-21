@@ -843,9 +843,12 @@
           'Permanent Address':       document.getElementById('permanentAddress').value.trim(),
           'Emergency Contact Name':  document.getElementById('emergencyName').value.trim(),
           'Emergency Relationship':  document.getElementById('relationship').value,
-          'Emergency Phone':         document.getElementById('emergencyPhone').value.trim(),
-          'Photo URL':               photoUrl,
-          'Submitted At':            new Date().toISOString()
+         'Emergency Phone':         document.getElementById('emergencyPhone').value.trim(),
+'Photo URL':               photoUrl,
+'Emergency Contact Name 2': document.getElementById('emergencyName2').value.trim(),
+'Emergency Relationship 2': document.getElementById('relationship2').value,
+'Emergency Phone 2':        document.getElementById('emergencyPhone2').value.trim(),
+'Submitted At':            new Date().toISOString()
         };
 
         await submitToSheetsDb(row);
