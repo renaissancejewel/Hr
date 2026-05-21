@@ -805,15 +805,43 @@
 
       // Validate required fields
       const required = this.querySelectorAll('[required]');
-      let valid = true;
-      required.forEach(el => {
-        if (el.type === 'checkbox') { if (!el.checked) valid = false; }
-        else if (!el.value.trim()) { valid = false; el.style.borderColor = 'var(--ruby)'; }
-        else { el.style.borderColor = ''; }
-      });
-      if (!valid) {
-        setStatus('Please fill in all required fields before submitting.', true);
-        return;
+let valid = true;
+
+required.forEach(el => {
+  if (el.type === 'checkbox') {
+    if (!el.checked) valid = false;
+  } else if (el.tagName === 'SELECT') {
+    if (!el.value || el.value === '') {
+      valid = false;
+      el.style.borderColor = 'var(--ruby)';
+    } else {
+      el.style.borderColor = '';
+    }
+  } else {
+    if (!el.value.trim()) {
+      valid = false;
+      el.style.borderColor = 'var(--ruby)';
+    } else {
+      el.style.borderColor = '';
+    }
+  }
+});
+
+// Explicit emergency contact checks
+['emergencyName','emergencyPhone','relationship',
+ 'emergencyName2','emergencyPhone2','relationship2'].forEach(id => {
+  const el = document.getElementById(id);
+  if (!el.value || !el.value.trim()) {
+    valid = false;
+    el.style.borderColor = 'var(--ruby)';
+  }
+});
+
+if (!valid) {
+  setStatus('Please fill in all required fields before submitting.', true);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  return;
+}
       }
 
       submitBtn.disabled = true;
