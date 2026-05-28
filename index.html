@@ -585,7 +585,7 @@
             <!-- Photo Upload -->
             <div style="margin-top:24px;">
               <div class="field" style="gap:10px;">
-                <label>Passport-size Photograph</label>
+              <label>Passport-size Photograph <span class="req">*</span></label>
                 <div class="photo-upload-wrap">
                   <div class="photo-preview" id="photoPreview">
                     <img id="photoImg" src="" alt="Preview"/>
@@ -843,14 +843,23 @@ if (!valid) {
   return;
 }
 
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Submitting…';
+     // Validate photo is provided
+const photoFile = document.getElementById('photoInput').files[0];
+if (!photoFile) {
+  setStatus('Please upload a passport-size photograph before submitting.', true);
+  document.getElementById('photoPreview').style.borderColor = 'var(--ruby)';
+  document.getElementById('photoPreview').style.borderStyle = 'dashed';
+  document.getElementById('photoPreview').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  return;
+}
 
-      try {
-        // Step 1 — upload photo if provided
-        let photoUrl = '';
-        const photoFile = document.getElementById('photoInput').files[0];
-        if (photoFile) {
+submitBtn.disabled = true;
+submitBtn.textContent = 'Submitting…';
+
+try {
+  // Step 1 — upload photo if provided
+  let photoUrl = '';
+  if (photoFile) {
           setStatus('Uploading photograph…');
           photoUrl = await uploadToCloudinary(photoFile);
         }
@@ -894,9 +903,12 @@ if (!valid) {
     });
 
     // ── Photo upload preview ──
-    document.getElementById('photoInput').addEventListener('change', function() {
-      const file = this.files[0];
-      if (!file) return;
+   document.getElementById('photoInput').addEventListener('change', function() {
+  const file = this.files[0];
+  if (!file) return;
+  // Clear any validation error on the preview border
+  document.getElementById('photoPreview').style.borderColor = '';
+  document.getElementById('photoPreview').style.borderStyle = 'dashed';
       if (file.size > 2 * 1024 * 1024) {
         alert('File size exceeds 2 MB. Please choose a smaller image.');
         this.value = '';
